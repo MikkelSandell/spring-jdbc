@@ -36,7 +36,24 @@ public class DepartmentRepository implements IRepository<Department>{
 
     @Override
     public Department getSingleById(int id) {
-        return null;
+        Connection conn = DatabaseConnectionManager.getConnection();
+        try {
+
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM departments WHERE department_number = ?");
+            pstmt.setInt(1,id);
+            pstmt.execute();
+            ResultSet rs = pstmt.getResultSet();
+            rs.next();
+            Department temp = new Department(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3));
+        return temp;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
