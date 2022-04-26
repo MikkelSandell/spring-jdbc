@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/createemployee}" method="post">
+    <section class="content">
+<p>
+    <input type="number" id="id" placeholder="ide"
+           name="id" required/>
+</p>
+<p>
+    <input type="text" id="name" placeholder="name"
+           name="name"/>
+</p>
+<p>
+    <input type="text" id="job" placeholder="job" name="job" required/>
+</p>
+
+<p>
+    <input type="number" id="manger" placeholder="manger"
+           name="manger" required/>
+</p>
+<p>
+    <input type="text" id="hiredate" placeholder="YYYY-MM-DD"
+           name="hiredate" required/>
+</p>
+<p>
+    <input type="number" id="salary" placeholder="salary"
+           name="salary" required/>
+</p>
+<p>
+    <input type="number" id="commisson" placeholder="commisson"
+           name="commisson" required/>
+</p>
+<p>
+    <input type="number" id="deponum" placeholder="deponum"
+           name="deponum" required/>
+</p>
+<p>
+    <input type="submit" value=" Tilf&oslash;j "/>
+</p>
+    </section>
+</form>
+</body>
+</html>

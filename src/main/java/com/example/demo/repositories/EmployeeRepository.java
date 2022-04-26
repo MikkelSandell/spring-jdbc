@@ -1,9 +1,9 @@
 package com.example.demo.repositories;
 
-import com.example.demo.models.Department;
+
 import com.example.demo.models.Employee;
 import com.example.demo.utility.DatabaseConnectionManager;
-
+import java.text.SimpleDateFormat;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,11 +71,12 @@ public class EmployeeRepository implements IRepository<Employee> {
             Connection conn = DatabaseConnectionManager.getConnection();
             String insert = "INSERT INTO employees (`id`, `employee_name`, `job`, `manager`, `hiredate`, `salary`, `commission`, `department_number`) VALUES (?, ?, ?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(insert);
+            String date= entity.getHiredate();
             stmt.setInt(1, (entity.getId()));
             stmt.setString(2, entity.getName());
             stmt.setString(3, entity.getJob());
             stmt.setInt(4, entity.getManger());
-            stmt.setDate(5, Date.valueOf(entity.getHiredate()));
+            stmt.setDate(5, Date.valueOf(date));
             stmt.setInt(6, entity.getSalary());
             stmt.setInt(7, entity.getCommisson());
             stmt.setInt(8, entity.getDeponum());
