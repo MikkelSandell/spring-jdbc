@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Controller
@@ -26,4 +27,16 @@ public class DepartmentController {
         model.addAttribute("department",d);
         return "department";
     }
-}
+
+    @GetMapping("/createDepartment")
+    public String createDepartment(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("location") String location, Model model){
+        DepartmentRepository d = new DepartmentRepository();
+        Department department = new Department(id, name, location);
+        d.create(department);
+        List departments = departmentRepository.getAllEntities();
+        model.addAttribute("departments",departments);
+        return "departments";
+    }
+
+
+    }
